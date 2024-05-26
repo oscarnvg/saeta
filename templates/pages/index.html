@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block title %} | Inicio {% endblock %}
+{% block content %}
+    <!-- Alerts -->
+    {% include 'partials/_alerts.html' %}
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'index' %}">
+                        <i class="fas fa-home"></i> Inicio</a>
+                </li>
+                <li class="breadcrumb-item active"> Inicio</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section id="about" class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <p class="lead" align="justify" style="width: 150%;">
+                    ¡Bienvenidos a San Marcos Inmobiliaria S.A.S, tu socio para hacer realidad tus sueños en Manizales! Somos una empresa establecida y confiable, comprometida con un servicio excepcional al cliente. Nuestro equipo experto y honesto está aquí para superar tus expectativas, con soluciones personalizadas respaldadas por nuestra vasta experiencia y registros legales. En San Marcos, no solo buscamos clientes, ¡buscamos socios! Con nosotros, encontrar propiedades es emocionante y fácil.
+                </p>
+                <div style="text-align: center;">
+                    <img src="{% static 'img/about.jpg' %}" alt="">
+                </div>
+                <p class="lead" align="justify" style="width: 150%;">
+                    En San Marcos Inmobiliaria, no solo encontramos inmuebles, ¡creamos hogares! Nuestro compromiso va más allá de simplemente buscar propiedades; nos esforzamos por entender tus necesidades, tus sueños y tus aspiraciones. ¿Por qué somos los mejores para encontrar tu próximo hogar? Porque nos apasiona hacer realidad tus deseos de tener un espacio que llames tuyo. Con nuestra experiencia, dedicación y atención personalizada, te guiaremos en cada paso del proceso para que encuentres exactamente lo que buscas. ¡Haz de tu búsqueda de inmuebles una experiencia emocionante y sin complicaciones con nosotros!
+                </p>
+            </div>
+            <div class="col-md-4">
+                {% if mvp_realtors %}
+                    {% for realtor in mvp_realtors %}
+                        <div class="card">
+                            <img class="card-img-top" src="{{ realtor.photo.url }}" alt="Seller of the month">
+                            <div class="card-body">
+                                <h5 class="card-title">Representante</h5>
+                                <h6 class="text-secondary">{{ realtor.name }}</h6>
+                                <p>
+                                    <i class="fas fa-phone"></i> {{ realtor.phone }}</p>
+                                <p>
+                                    <i class="fas fa-envelope-open"></i> {{ realtor.email }}</p>
+                                <p class="card-text" align="justify">{{ realtor.description }}
+                                </p>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .full-height-button {
+      width: 100%;
+      height: 5em; /* Ajusta la altura del botón según tus necesidades */
+      background-color: #1e2749; /* Fondo azul oscuro */
+      color: white; /* Texto blanco */
+      font-size: 1.5em; /* Tamaño de fuente grande */
+      border: none; /* Quita el borde */
+      cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    }
+  </style>
+  
+  <section>
+    <button class="full-height-button" onclick="window.location.href='{% url 'listings' %}'">ACA PUEDES VER LAS PROPIEDADES</button>
+  </section>
+
+    <section id="services" class="py-5 bg-secondary text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="fa fa-users fa-4x mr-4"></i>
+                    <hr>
+                    <h3>Clientes</h3>
+                    <p>La satisfacción de nuestros clientes es el único foco de nuestra misión y es por eso que estamos aquí para servirle solo lo mejor. ¡Cuanto más lo satisfamos, más crecemos!</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-home fa-4x mr-4"></i>
+                    <hr>
+                    <h3>Administramos Propiedades</h3>
+                    <p>Enumeramos las propiedades que pueden ser una de las casas ideales que usted ha soñado para vivir. No se trata sólo de cómo vive, sino de dónde vive.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fa fa-handshake fa-4x mr-4"></i>
+                    <hr>
+                    <h3>Nuestros Servicios</h3>
+                    <p>Nuestro objetivo es brindar un servicio al cliente que no solo sea el mejor, sino también legendario. consideramos cada
+                        cliente como un miembro de la familia que merece nada más que el mejor servicio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

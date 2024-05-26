@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | Nosotros {% endblock %}
+{% block content %}
+    <section id="showcase-inner" class="py-5 text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h1 class="display-4">Nuestros Servicios</h1>
+                    <p class="lead">Prometemos brindarle lo máximo
+                        Servicios inmobiliarios profesionales, éticos e informados en la industria!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section id="bc" class="mt-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'index' %}">
+                            <i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="breadcrumb-item active"> Nosotros</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section id="about" class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+
+                    <p class="lead" align="justify">¡Bienvenidos a San Marcos Inmobiliaria S.A.S, donde convertimos tus sueños en realidad! Nos enorgullece ser una sociedad sólidamente establecida en la 
+                        vibrante ciudad de Manizales, con todos los documentos en regla para brindarte seguridad y confianza. Nuestro compromiso con el servicio al cliente es el corazón de nuestra 
+                        empresa, y trabajamos incansablemente para superar tus expectativas.
+
+                        Con una vasta experiencia respaldada por nuestro registro mercantil y matrícula de arrendador, ofrecemos un equipo enfocado en tu satisfacción. Nos destacamos por nuestra 
+                        eficiencia, honestidad y respeto en cada interacción contigo. ¿Qué nos diferencia? Nuestro portafolio de servicios nos permite adaptarnos a tus necesidades 
+                        inmobiliarias de manera efectiva, ofreciendo soluciones a medida.
+                        
+                        En San Marcos Inmobiliaria S.A.S, no solo buscamos clientes, ¡buscamos socios! Estamos ansiosos por iniciar relaciones sólidas con personas que confíen en nuestra experiencia 
+                        y dedicación. Permítenos ser tus aliados en cada paso del camino, brindándote el apoyo y la orientación que necesitas para alcanzar tus objetivos. ¡Tu búsqueda de propiedades 
+                        nunca ha sido más emocionante ni más fácil con nosotros a tu lado!
+                        
+                        
+                    <img src="{% static 'img/about.jpg' %}" alt="">
+                    <h2>¿Sabes por qué somos los mejores para la búsqueda de tu casa?</h2>
+                    <p class="mt-4" align="justify">
+                        En San Marcos Inmobiliaria, no solo encontramos inmuebles, ¡creamos hogares! Nuestro compromiso va más allá de simplemente buscar propiedades;
+                         nos esforzamos por entender tus necesidades, tus sueños y tus aspiraciones. ¿Por qué somos los mejores para encontrar tu próximo hogar? Porque nos apasiona hacer realidad 
+                         tus deseos de tener un espacio que llames tuyo. Con nuestra experiencia, dedicación y atención personalizada, te guiaremos en cada paso del proceso para que encuentres 
+                         exactamente lo que buscas. ¡Haz de tu búsqueda de inmuebles una experiencia emocionante y sin complicaciones con nosotros!</p></p>
+                </div>
+                <div class="col-md-4">
+                    {% if mvp_realtors %}
+                        {% for realtor in mvp_realtors %}
+                            <div class="card">
+                                <img class="card-img-top" src="{{ realtor.photo.url }}" alt="Seller of the month">
+                                <div class="card-body">
+                                    <h5 class="card-title">Representante</h5>
+                                    <h6 class="text-secondary">{{ realtor.name }}</h6>
+                                    <p>
+                                        <i class="fas fa-phone"></i> {{ realtor.phone }}</p>
+                                    <p>
+                                        <i class="fas fa-envelope-open"></i> {{ realtor.email }}</p>
+                                    <p class="card-text" align="justify">{{ realtor.description }}
+                                    </p>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work -->
+    <section id="work" class="bg-dark text-white text-center">
+        <h3 class="display-4">¡Estamos aquí para servirle solo lo mejor!</h3>
+        <h5>¿Por qué seguir esperando? Comience su búsqueda y consiga el inmueble ideal que le guste</h5>
+        <hr>
+        <a href="listings" class="btn btn-secondary text-white btn-lg">Ver nuestras propiedades</a>
+    </section>
+
+    <!-- Team -->
+    <!--
+    <section id="team" class="py-5">
+        <div class="container">
+            <h2 class="text-center">San Marcos</h2>
+            <div class="row text-center">
+                {% if realtors %}
+                    {% for realtor in realtors %}
+                        <div class="col-md-4">
+                            <img src="{{ realtor.photo.url }}" alt="" class="rounded-circle mb-3">
+                            <h4>{{ realtor.name }}</h4>
+                            <p class="text-success">
+                                <i class="fas fa-award text-success mb-3"></i> Comercial</p>
+                            <hr>
+                            <p>
+                                <i class="fas fa-phone"></i> {{ realtor.phone }}</p>
+                            <p>
+                                <i class="fas fa-envelope-open"></i> {{ realtor.email }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-md-12">
+                        <p>No tenemos comercial activo</p>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+-->
+
+{% endblock %}
